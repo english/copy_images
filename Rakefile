@@ -10,10 +10,6 @@ include Rake::DSL
 
 Bundler::GemHelper.install_tasks
 
-Reek::Rake::Task.new do |t|
-  t.source_files = FileList.new('lib/**/*.rb')
-end
-
 RSpec::Core::RakeTask.new(:spec)
 
 Cucumber::Rake::Task.new(:features) do |t|
