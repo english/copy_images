@@ -4,8 +4,8 @@ require File.expand_path('../lib/copy_images/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Jamie English"]
   gem.email         = ["jamienglish@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Copy supplier images to bransom.}
+  gem.summary       = %q{Give me a cleaned up catalog.xml and a directory full of images named by supplier reference and I will copy them to your bsmart directory.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
