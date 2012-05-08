@@ -15,6 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = CopyImages::VERSION
   gem.add_development_dependency('rspec', '~> 2.8.0')
+  gem.add_development_dependency('cucumber')
   gem.add_development_dependency('aruba')
   gem.add_development_dependency('rake', '~> 0.9.2')
   gem.add_dependency('methadone', '~>1.0.0.rc4')
