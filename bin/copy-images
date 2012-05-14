@@ -11,7 +11,7 @@ class App
   main do |xml_file, image_src, image_dest| # Add args you want: |like,so|
     xml = File.read(xml_file)
     catalog = CopyImages::Catalog.from_xml(xml)
-    images = Dir["#{image_src}/*.jpg"]
+    images = Dir["#{image_src}/**/*.jpg"]
 
     copier = CopyImages::ImageCopier.new(catalog: catalog, images: images,
                                          dest_prefix: image_dest)

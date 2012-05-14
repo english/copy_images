@@ -31,3 +31,18 @@ Feature: Copy images to bsmart directory that aren't already there
     Then the following files should exist:
       | output/77/01/77-01-001.jpg | 
       | output/77/01/77-01-002.jpg | 
+
+  Scenario: Images in several subdirectories
+    Given an xml file named "catalog.xml" with the following products:
+      | StockNum   | Reference |
+      | 77-01-001  | ref1      |
+      | 77-01-002  | ref2      |
+      | 77-01-003  | ref3      |
+    And the following images
+      | dir_one/ref1.jpg |
+      | dir_two/ref2.jpg |
+    And a directory named "output"
+    When I run `copy-images catalog.xml . output`
+    Then the following files should exist:
+      | output/77/01/77-01-001.jpg | 
+      | output/77/01/77-01-002.jpg | 
