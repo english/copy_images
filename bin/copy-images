@@ -3,6 +3,7 @@
 require 'optparse'
 require 'methadone'
 require 'copy_images'
+require 'find'
 
 class App
   include Methadone::Main
@@ -11,7 +12,17 @@ class App
   main do |xml_file, image_src, image_dest| # Add args you want: |like,so|
     xml = File.read(xml_file)
     catalog = CopyImages::Catalog.from_xml(xml)
-    images = Dir["#{image_src}/**/*.jpg"]
+
+    images = []
+    Find.find(image_src) do |path|
+      exts = %w[jpg JPG]
+      if exts.include? File.extname(path)
+        images << path
+      end
+    end
+    images = Dir[File.join(image_src, '**', '*.jpg')]
+    
+    puts "images found: #{images}"
 
     copier = CopyImages::ImageCopier.new(catalog: catalog, images: images,
                                          dest_prefix: image_dest)

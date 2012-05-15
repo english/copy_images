@@ -17,6 +17,7 @@ module CopyImages
 		def copy_image(product)
 			src = find_image(product.reference)
 			return unless src
+      puts "going to copy #{product.reference} to #{@dest_prefix}"
 
 			dest = File.join(@dest_prefix, product.image_path)
 
