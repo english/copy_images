@@ -5,8 +5,8 @@ module CopyImages
     include ROXML
 
     attr_accessor :stock_number, :reference
-    xml_accessor  :stock_number, from: 'StockNum'
-    xml_accessor  :reference,    from: 'Reference'
+    xml_accessor  :stock_number, from: 'StockNum' do |sku| sku.strip end
+    xml_accessor  :reference,    from: 'Reference' do |ref| ref.strip end
 
     def initialize(attrs={})
       attrs.each { |k,v| send("#{k}=", v) }

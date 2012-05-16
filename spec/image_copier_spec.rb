@@ -21,6 +21,34 @@ module CopyImages
           subject.find_image(reference).should == '001-001-12_blabla.jpg'
         end
       end
+
+      context "given lists of images in different subdirectories" do
+        it "finds the image for a product" do
+          subject.images = [
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE404.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE405.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE406.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE407.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EP286.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EP287.jpg" ]
+
+          subject.find_image('EE404').should == '/Users/jamie/Dropbox/Ortak/Web/Firefly/EE404.jpg'
+        end
+      end
+
+      context "image not available for reference" do
+        it "returns false" do
+          subject.images = [
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE404.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE405.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE406.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EE407.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EP286.jpg",
+            "/Users/jamie/Dropbox/Ortak/Web/Firefly/EP287.jpg" ]
+
+          subject.find_image('doesnt_exist').should be_false
+        end
+      end
 		end
 
 		describe "#make_way_for" do

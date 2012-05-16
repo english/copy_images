@@ -4,6 +4,7 @@ require 'optparse'
 require 'methadone'
 require 'copy_images'
 require 'find'
+require 'pp'
 
 class App
   include Methadone::Main
@@ -21,8 +22,7 @@ class App
       end
     end
     images = Dir[File.join(image_src, '**', '*.jpg')]
-    
-    puts "images found: #{images}"
+    pp images
 
     copier = CopyImages::ImageCopier.new(catalog: catalog, images: images,
                                          dest_prefix: image_dest)
